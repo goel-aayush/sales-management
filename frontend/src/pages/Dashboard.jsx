@@ -4,17 +4,16 @@ import { fetchFilterOptions } from "../services/api";
 import StatsMetrics from "../components/StatsMetrics";
 import FilterBar from "../components/FilterBar";
 import SalesTable from "../components/SalesTable";
-import Sidebar from "../components/SideBar";
+import Sidebar from "../components/Sidebar";
 import { Search } from "lucide-react";
 
 const Dashboard = () => {
   // --- State Management ---
   const [search, setSearch] = useState("");
-  const [filters, setFilters] = useState({}); 
+  const [filters, setFilters] = useState({});
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("date_desc");
 
-  
   const [options, setOptions] = useState({
     regions: [],
     categories: [],
@@ -22,7 +21,6 @@ const Dashboard = () => {
     tags: [],
   });
 
-  
   // It automatically re-runs whenever filters, page, sort, or search changes.
   const { data, stats, loading, totalPages } = useSalesData(
     filters,
@@ -49,7 +47,7 @@ const Dashboard = () => {
       setSort(value);
     } else {
       setFilters((prev) => ({ ...prev, [name]: value }));
-      setPage(1); 
+      setPage(1);
     }
   };
 
@@ -66,10 +64,8 @@ const Dashboard = () => {
   const getPageNumbers = () => {
     if (totalPages <= 1) return [1];
 
-    
     const start = Math.floor((page - 1) / 5) * 5 + 1;
-    
-    
+
     const end = Math.min(totalPages, start + 4);
 
     const pages = [];
@@ -86,7 +82,6 @@ const Dashboard = () => {
 
       {/* Main Layout Area */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
-        
         {/* Top Header with Search */}
         <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0">
           <h2 className="text-xl font-semibold text-gray-800">
@@ -110,7 +105,6 @@ const Dashboard = () => {
 
         {/* Scrollable Content Container */}
         <main className="flex-1 p-8 overflow-y-auto">
-          
           {/* 1. Filters (Top of Page) */}
           <FilterBar
             filters={filters}
