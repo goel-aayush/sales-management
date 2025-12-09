@@ -4,7 +4,7 @@ import { fetchFilterOptions } from "../services/api";
 import StatsMetrics from "../components/StatsMetrics";
 import FilterBar from "../components/FilterBar";
 import SalesTable from "../components/SalesTable";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/SideBar";
 import { Search } from "lucide-react";
 
 const Dashboard = () => {
